@@ -4,10 +4,14 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import entites.Product;
+
 public class Program {
 	public static void main(String[] args) {
 		File fileCVS = new File("/home/caio/eclipse-workspace/amip/amip/mip.csv");
 		String fileLine;
+		int consico;
+		double value;
 
 		System.out.println("Analise de Movimentação de Produtos (A-MIP)\n");
 		
@@ -19,14 +23,15 @@ public class Program {
 				fileLine = scanner.nextLine();
 				String[] separationComma = fileLine.split(",");
 				
-				System.out.println(separationComma[0]);
-				System.out.println(separationComma[1]);
-				System.out.println(separationComma[2]);
-				System.out.println(separationComma[4]);
+				consico = Integer.parseInt(separationComma[0]);
+				value = Double.parseDouble(separationComma[2]);
+				Product product = new Product(consico, separationComma[1],value);
+				System.out.println(product);
 
 			}
 			scanner.close();
 		} catch (FileNotFoundException e) {
+			
 		}
 	}
 }
