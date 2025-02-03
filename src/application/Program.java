@@ -13,13 +13,20 @@ public class Program {
 		
 		try {
 			Scanner scanner = new Scanner(fileCVS);
+			scanner.nextLine();// BREAK na primeira linha
+			
 			while(scanner.hasNext()) {
 				fileLine = scanner.nextLine();
-				System.out.println(fileLine);
+				String[] separationComma = fileLine.split(",");
+				
+				System.out.println(separationComma[0]);
+				System.out.println(separationComma[1]);
+				System.out.println(separationComma[2]);
+				System.out.println(separationComma[4]);
+
 			}
 			scanner.close();
 		} catch (FileNotFoundException e) {
 		}
-
 	}
 }
