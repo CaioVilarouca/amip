@@ -4,13 +4,14 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+import entites.ListMIP;
 import entites.ManipulateData;
 import entites.Product;
 
 public class Program {
 	public static void main(String[] args) {
 		String url = "/home/caio/eclipse-workspace/amip/amip/mip.csv";
-
+		ListMIP listMIP = new ListMIP();
 
 		System.out.println("Analise de Movimentação de Produtos (A-MIP)\n");
 		
@@ -32,7 +33,7 @@ public class Program {
 
 				Product product = new Product(consico, separationComma[1],value);
 				ManipulateData manipulateData = new ManipulateData(product, quantity, stock);
-				manipulateData.verificationRemains();
+				listMIP.setManipulateData(manipulateData);
 
 			}
 		} catch (IOException e) {// Generic 
