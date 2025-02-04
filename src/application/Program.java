@@ -13,7 +13,10 @@ public class Program {
 		// Try with resources
 		try (BufferedReader bufferedReader = new BufferedReader(new FileReader(url))){
 			String line = bufferedReader.readLine();// read line end CSV
+			
 			while(line != null) {
+				System.out.println(line);
+				line = bufferedReader.readLine();
 				
 				/*
 				 * 		String fileLine = scanner.nextLine();
