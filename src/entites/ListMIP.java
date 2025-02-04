@@ -4,19 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListMIP {
-	private List <ManipulateData> listPurchase = new ArrayList<>();
+	private List <ManipulateData> list = new ArrayList<>();
 
-	public List<ManipulateData> getListPurchase() {
-		return listPurchase;
-	}
-
+	
 	public void addList(ManipulateData manipulateData) {
-		listPurchase.add(manipulateData);
+		list.add(manipulateData);
 	}
 	
-	public void printList() {
-		for (ManipulateData x : listPurchase) {
+	public void listPrint() {
+		for (ManipulateData x : list) {
 			System.out.println(x);
 		}
+		for (ManipulateData x : list) {
+			if (x.quantityRemains != null) {
+				System.out.println(x.quantityRemains);
+			}
+		}		
+	
 	}
 }
