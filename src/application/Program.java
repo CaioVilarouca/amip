@@ -11,6 +11,7 @@ public class Program {
 	public static void main(String[] args) {
 		String url = "/home/caio/eclipse-workspace/amip/amip/mip.csv";
 
+
 		System.out.println("Analise de Movimentação de Produtos (A-MIP)\n");
 		
 		// Try with resources
@@ -31,7 +32,7 @@ public class Program {
 
 				Product product = new Product(consico, separationComma[1],value);
 				ManipulateData manipulateData = new ManipulateData(product, quantity, stock);
-				System.out.println(manipulateData);
+				manipulateData.verificationRemains();
 
 			}
 		} catch (IOException e) {// Generic 
