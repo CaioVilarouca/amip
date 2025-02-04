@@ -1,18 +1,17 @@
 package application;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
-import entites.ListMIP;
-import entites.ManipulateData;
+
 import entites.Product;
 
 public class Program {
 	public static void main(String[] args) {
 		String url = "/home/caio/eclipse-workspace/amip/amip/mip.csv";
-		ListMIP listMIP = new ListMIP();
-
 		System.out.println("Analise de Movimentação de Produtos (A-MIP)\n");
 		
 		// Try with resources
@@ -23,24 +22,22 @@ public class Program {
 
 			while(line != null) {
 				String[] separationComma = line.split(";");
-				
-				int consico = Integer.parseInt(separationComma[0]);
-				double quantity = Double.parseDouble(separationComma[2]);
-				double value = Double.parseDouble(separationComma[3]);
-				double stock = Double.parseDouble(separationComma[4]);
+				System.out.println(line);
 				
 				line = bufferedReader.readLine();
-
-				Product product = new Product(consico, separationComma[1],value);
-				ManipulateData manipulateData = new ManipulateData(product, quantity, stock);
-				manipulateData.verificationRemains();
-
-				listMIP.addList(manipulateData);
 			}
 		} catch (IOException e) {// Generic 
 			System.out.print("Error " + e.getMessage());
 		}
-		listMIP.listPrint();
-		System.out.println();
+		
+		try {
+			BufferedWriter urlCSV =  new BufferedWriter(new FileWriter("/home/caio/Área de trabalho/result.csv"));
+			urlCSV.write(";Analise de Movimentação de Produtos (A-MIP)");
+			urlCSV.write("\n\n Consico;Produto;QTED;Custo;Estoque");
+
+			urlCSV.close();
+		} catch (Exception e) {
+			
+		}
 	}
 }
