@@ -1,38 +1,45 @@
 package application;
 
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 import entites.Product;
-import entites.VerificationData;
+import entites.ManipulateData;
 
 public class Program {
 	public static void main(String[] args) {
 		File fileCVS = new File("/home/caio/eclipse-workspace/amip/amip/mip.csv");
+		Scanner scanner = null;
 
 		System.out.println("Analise de Movimentação de Produtos (A-MIP)\n");
 		
 		try {
-			Scanner scanner = new Scanner(fileCVS);
-			scanner.nextLine();// BREAK na primeira linha
+			scanner = new Scanner(fileCVS);
+			scanner.nextLine();// BREAK one line
 			
-			while(scanner.hasNext()) {
+			while(scanner.hasNextLine()) {
 				String fileLine = scanner.nextLine();
-				String[] separationComma = fileLine.split(",");
+				System.out.println(fileLine);
+				//String[] separationComma = fileLine.split(";");
 				
-				int consico = Integer.parseInt(separationComma[0]);// Consico
-				double amount = Double.parseDouble(separationComma[2]);// Quantidade a quebra
-				double value = Double.parseDouble(separationComma[3]);// Preço de custo
-				double stock = Double.parseDouble(separationComma[4]);// Estoque Atual
+				
+				//int consico = Integer.parseInt(separationComma[0]);
+				//double quantity = Double.parseDouble(separationComma[2]);
+				//double value = Double.parseDouble(separationComma[3]);
+				//double stock = Double.parseDouble(separationComma[4]);
 
-				Product product = new Product(consico, separationComma[1],value);
-				VerificationData vericationData = new VerificationData(product, amount, stock);
-				System.out.println(vericationData);
+				//Product product = new Product(consico, separationComma[1],value);
+				//ManipulateData manipulateData = new ManipulateData(product, quantity, stock);
+				//System.out.println(manipulateData);
 			}
-			scanner.close();
-		} catch (FileNotFoundException e) {
-			
+		} catch (IOException e) {// Generic 
+			e.getMessage();
+		}
+		finally {
+			if(scanner != null) {
+				scanner.close();
+			}
 		}
 	}
 }
