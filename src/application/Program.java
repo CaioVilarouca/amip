@@ -33,12 +33,15 @@ public class Program {
 
 				Product product = new Product(consico, separationComma[1],value);
 				ManipulateData manipulateData = new ManipulateData(product, quantity, stock);
-				listMIP.setManipulateData(manipulateData);
-
+				listMIP.addList(manipulateData);
+				
 			}
 		} catch (IOException e) {// Generic 
 			System.out.print("Error " + e.getMessage());
 		}
+		
+		listMIP.printList();
+
 	
 	}
 }

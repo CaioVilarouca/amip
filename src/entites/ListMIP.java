@@ -1,15 +1,22 @@
 package entites;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ListMIP {
-	private ManipulateData manipulateData;
+	private List <ManipulateData> listPurchase = new ArrayList<>();
 
-	public ManipulateData getManipulateData() {
-		return manipulateData;
+	public List<ManipulateData> getListPurchase() {
+		return listPurchase;
 	}
 
-	public void setManipulateData(ManipulateData manipulateData) {
-		this.manipulateData = manipulateData;
+	public void addList(ManipulateData manipulateData) {
+		listPurchase.add(manipulateData);
 	}
 	
-	
+	public void printList() {
+		for (ManipulateData x : listPurchase) {
+			System.out.println(x);
+		}
+	}
 }
