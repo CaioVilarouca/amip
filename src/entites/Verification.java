@@ -11,10 +11,15 @@ public class Verification {
 		this.quantity = quantity;
 		this.stock = stock;
 	}
+	
+	public double valueList() {
+		return product.value;
+	}
 
 	@Override
 	public String toString() {
 		return product + "," + quantity + "," + stock;
 	}
+
 	
 }

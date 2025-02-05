@@ -3,7 +3,7 @@ package entites;
 public class Product {
 	private Integer id;
 	private String name;
-	private Double value;
+	protected Double value;
 	
 	public Product(Integer id, String name, Double value) {
 		super();
@@ -14,9 +14,7 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return id + ";" + name + "; R$ " + value;
-	}
-	
-	
+		return id + "," + name + ",R$ " + value;
+	}	
 
 }

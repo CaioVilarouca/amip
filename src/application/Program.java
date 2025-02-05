@@ -17,6 +17,8 @@ public class Program {
 		Mip mip = new Mip();
 		String url = "/home/caio/eclipse-workspace/amip/amip/mip.csv";
 		System.out.println("Analise de Movimentação de Produtos (A-MIP)\n");
+	
+		double valueList = 0;
 		
 		// Try with resources
 		try (BufferedReader bufferedReader = new BufferedReader(new FileReader(url))){
@@ -37,19 +39,22 @@ public class Program {
 				
 				line = bufferedReader.readLine();
 				
+				valueList += verification.valueList();
+				
 				// File CSV
 				BufferedWriter urlCSV =  new BufferedWriter(new FileWriter("/home/caio/Área de trabalho/result.csv"));
 				urlCSV.write(";Analise de Movimentação Interna de Produtos (A-MIP)");
-				urlCSV.write("\n\n Consico;Produto;QTED;Custo;Estoque;");
+				urlCSV.write("\n\n Consico;Produto;Custo;QTED;Estoque;");
 				for (Verification x : mip.getList()) {
 					urlCSV.write("\n" + x);
 				}
+				urlCSV.write("\n; ;R$ " + valueList);
 				urlCSV.write("\n\n;Analise residual");
 				urlCSV.close();
 			}
+			System.out.println("File %100 verification");
 		} catch (IOException e) {// Generic 
 			System.out.print("Error " + e.getMessage());
 		}
-		System.out.println("File %100 verification");
 	}
 }
