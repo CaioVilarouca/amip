@@ -40,21 +40,32 @@ public class Program {
 				line = bufferedReader.readLine();
 				
 				valueList += verification.valueList();
-				
-				// File CSV
-				BufferedWriter urlCSV =  new BufferedWriter(new FileWriter("/home/caio/Área de trabalho/result.csv"));
-				urlCSV.write(";Analise de Movimentação Interna de Produtos (A-MIP)");
-				urlCSV.write("\n\n Consico;Produto;Custo;QTED;Estoque;");
-				for (Verification x : mip.getList()) {
-					urlCSV.write("\n" + x);
-				}
-				urlCSV.write("\n; ;R$ " + valueList);
-				urlCSV.write("\n\n;Analise residual");
-				urlCSV.close();
 			}
 			System.out.println("File %100 verification");
 		} catch (IOException e) {// Generic 
 			System.out.print("Error " + e.getMessage());
+		}
+		
+		try {
+			// File CSV
+			BufferedWriter urlCSV =  new BufferedWriter(new FileWriter("/home/caio/Área de trabalho/result.csv"));
+			urlCSV.write(";Analise de Movimentação Interna de Produtos (A-MIP)");
+			urlCSV.write("\n\n Consico;Produto;Custo;QTED;Estoque;");
+			for (Verification x : mip.getList()) {
+				urlCSV.write("\n" + x);
+			}
+			urlCSV.write("\n; ;R$ " + valueList);
+			
+			urlCSV.write("\n\n;                              Analise");
+			urlCSV.write("\n;Produtos que são residuais");
+			for (Verification x : mip.getList()) {
+				if(x.getQuantity() <= 9) {
+					urlCSV.write("\n" + x);
+				}
+			}
+			urlCSV.close();
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 	}
 }
