@@ -84,7 +84,7 @@ public class Program {
 				}
 			}
 			urlCSV.write("\n; ;R$ " + valueList);
-
+			
 			urlCSV.close();
 		} catch (Exception e) {
 			// TODO: handle exception
