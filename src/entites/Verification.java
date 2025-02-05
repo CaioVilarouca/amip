@@ -15,6 +15,7 @@ public class Verification {
 	public double valueList() {
 		return product.value;
 	}
+	
 
 	public Product getProduct() {
 		return product;

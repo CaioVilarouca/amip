@@ -56,10 +56,21 @@ public class Program {
 			}
 			urlCSV.write("\n; ;R$ " + valueList);
 			
-			urlCSV.write("\n\n;                              Analise");
+			urlCSV.write("\n;                              Analise");
 			urlCSV.write("\n;Produtos que são residuais");
+			
+			valueList = 0;
 			for (Verification x : mip.getList()) {
 				if(x.getQuantity() <= 9) {
+					urlCSV.write("\n" + x);
+					valueList += x.valueList();
+				}
+			}
+			urlCSV.write("\n; ;R$ " + valueList);
+			
+			urlCSV.write("\n;Produtos com estoque zerado pos MIP");
+			for (Verification x : mip.getList()) {
+				if(x.getQuantity() == x.getStock()) {
 					urlCSV.write("\n" + x);
 				}
 			}
