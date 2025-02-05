@@ -54,9 +54,9 @@ public class Program {
 			for (Verification x : mip.getList()) {
 				urlCSV.write("\n" + x);
 			}
-			urlCSV.write("\n; ;R$ " + valueList);
+			urlCSV.write("\n; Quantidade de produto :" +mip.getList().size()+ " ;R$ " + valueList);
 			
-			urlCSV.write("\n;                              Analise");
+			urlCSV.write("\n\n;                              Analise");
 			urlCSV.write("\n;Produtos que são residuais");
 			
 			valueList = 0;
@@ -74,6 +74,17 @@ public class Program {
 					urlCSV.write("\n" + x);
 				}
 			}
+			
+			valueList = 0;
+			urlCSV.write("\n\n342;Ajuste de estoque não justificável");
+			for (Verification x : mip.getList()) {
+				if(x.getQuantity() > 9) {
+					urlCSV.write("\n" + x);
+					valueList += x.valueList();
+				}
+			}
+			urlCSV.write("\n; ;R$ " + valueList);
+
 			urlCSV.close();
 		} catch (Exception e) {
 			// TODO: handle exception
